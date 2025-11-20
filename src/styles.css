@@ -1,0 +1,96 @@
+:root{
+  --max-width: 1200px;
+  --gap: 1rem;
+  --bg: #ffffff;
+  --muted: #666;
+  --accent: #0b69ff;
+  --base-font: 16px;
+}
+
+/* Scale the root font-size optionally (useful for accessibility) */
+html { font-size: var(--base-font); -webkit-text-size-adjust: 100%; }
+
+/* Page layout */
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: #111;
+}
+
+.site-header {
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  background: linear-gradient(90deg,#fff,#fafafa);
+}
+
+.site-header h1 { margin: 0; font-size: clamp(1.25rem, 3vw, 2rem); }
+.subtitle { color: var(--muted); margin-top: 0.25rem; }
+
+/* Centered container that is fluid */
+.container{
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: clamp(0.5rem, 3vw, 1.5rem);
+  flex: 1 0 auto;
+}
+
+/* Responsive grid: auto-fit with minmax keeps columns fluid */
+.grid{
+  display: grid;
+  gap: var(--gap);
+  /* Each column at least 240px, grow to fill space */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* Card */
+.card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 6px 18px rgba(20,20,20,0.08); }
+
+.card-img{
+  width: 100%;
+  height: auto; /* keeps aspect ratio */
+  object-fit: cover;
+  display: block;
+}
+
+/* Card content */
+.card-body{ padding: 0.75rem; display:flex; flex-direction:column; gap:0.5rem; }
+.card-title{ margin:0; font-size: 1.125rem; }
+.card-text{ margin:0; color:var(--muted); font-size: 0.95rem; }
+
+/* Footer */
+.site-footer{ text-align:center; padding:1rem; color:var(--muted); border-top:1px solid #f0f0f0; }
+
+/* Breakpoints: tweak spacing & fonts */
+@media (max-width: 599px) {
+  :root { --gap: 0.6rem; }
+  .container { padding: 0.75rem; }
+  .card-title { font-size: 1rem; }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  :root { --gap: 0.8rem; }
+  .container { padding: 1rem; }
+}
+
+@media (min-width: 960px) {
+  :root { --gap: 1rem; }
+  .container { padding: 1.25rem; }
+}
+
+/* Optional: reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .card, * { transition: none !important; animation: none !important; }
+}
