@@ -2,11 +2,11 @@
   "name": "square-cube",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://square&cube.github.io/Square-Cube-UI",
+	"homepage": "https://rupeshhcs-oss.github.io/square-cube",
 	"scripts": {
   "predeploy": "npm run build",
   "deploy": "gh-pages -d build"
-	}
+	},
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
