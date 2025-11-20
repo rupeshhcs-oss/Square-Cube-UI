@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  color: #fff;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo-title {
+  display: flex;
+  align-items: center;
+}
+.company-name {
+  margin-left: 0.75rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+}
+.header-nav a {
+  color: #fff;
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  transition: color 0.2s;
+  position: relative;
+}
+.header-nav a:hover,
+.header-nav a:focus {
+  color: #f4b400;
+}
