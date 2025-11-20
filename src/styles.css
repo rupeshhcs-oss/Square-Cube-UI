@@ -104,13 +104,24 @@ body {
   padding: clamp(0.8rem, 3.5vw, 1.6rem) 0;
 }
 
-/* About */
-.about { display:flex; gap:1.25rem; align-items:center; flex-wrap:wrap; }
+/* About - default to 2-column on desktop, stacked on mobile but positioned right */
+.about { 
+  display:flex; 
+  gap:1.25rem; 
+  align-items:center; 
+  flex-wrap:wrap; 
+}
 .about .about-media { flex: 1 1 320px; max-width:520px; }
 .about .about-body { flex: 1 1 260px; }
 
 /* Contact form basics */
-.contact-form { max-width: 700px; margin: 0 auto; display:flex; flex-direction:column; gap:0.75rem; }
+.contact-form { 
+  max-width: 700px; 
+  margin: 0 auto; 
+  display:flex; 
+  flex-direction:column; 
+  gap:0.75rem; 
+}
 .input, textarea, button {
   font: inherit;
   padding: 0.65rem 0.8rem;
@@ -133,12 +144,27 @@ textarea { min-height: 120px; resize: vertical; }
 .text-center { text-align:center; }
 .muted { color: var(--muted); font-size: 0.95rem; }
 
-/* Small screens */
+/* Small screens - About and Contact positioned on right side */
 @media (max-width: 599px) {
   :root { --gap: 0.6rem; }
   .container { padding: 0.6rem; }
   .site-header { padding: 0.6rem; }
-  .about { flex-direction: column; }
+  
+  /* About section: flex-direction row-reverse to put content on right */
+  .about { 
+    flex-direction: row-reverse; 
+    justify-content: flex-end;
+  }
+  .about .about-media { flex: 0 0 auto; width: 120px; max-width: none; }
+  .about .about-body { flex: 0 0 auto; max-width: 200px; }
+  
+  /* Contact form positioned to the right */
+  .contact-form { 
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
   .card-media { height: 140px; }
   .hero h1 { font-size: clamp(1.4rem, 8vw, 2rem); }
   nav { display: none; } /* if you have a hamburger, adjust accordingly */
