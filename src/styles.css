@@ -28,6 +28,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.45;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* App layout */
@@ -104,23 +105,27 @@ body {
   padding: clamp(0.8rem, 3.5vw, 1.6rem) 0;
 }
 
-/* About - default to 2-column on desktop, stacked on mobile but positioned right */
+/* About - default to 2-column on desktop, side-by-side on mobile */
 .about { 
   display:flex; 
   gap:1.25rem; 
   align-items:center; 
   flex-wrap:wrap; 
+  width: 100%;
+  overflow: hidden;
 }
 .about .about-media { flex: 1 1 320px; max-width:520px; }
 .about .about-body { flex: 1 1 260px; }
 
 /* Contact form basics */
 .contact-form { 
+  width: 100%;
   max-width: 700px; 
   margin: 0 auto; 
   display:flex; 
   flex-direction:column; 
   gap:0.75rem; 
+  overflow: hidden;
 }
 .input, textarea, button {
   font: inherit;
@@ -144,25 +149,38 @@ textarea { min-height: 120px; resize: vertical; }
 .text-center { text-align:center; }
 .muted { color: var(--muted); font-size: 0.95rem; }
 
-/* Small screens - About and Contact positioned on right side */
+/* Small screens - stack vertically, center content */
 @media (max-width: 599px) {
   :root { --gap: 0.6rem; }
-  .container { padding: 0.6rem; }
+  .container { 
+    padding: 0.6rem; 
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
   .site-header { padding: 0.6rem; }
   
-  /* About section: flex-direction row-reverse to put content on right */
+  /* About section: full width, stack on mobile */
   .about { 
-    flex-direction: row-reverse; 
-    justify-content: flex-end;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
   }
-  .about .about-media { flex: 0 0 auto; width: 120px; max-width: none; }
-  .about .about-body { flex: 0 0 auto; max-width: 200px; }
+  .about .about-media { 
+    flex: 0 0 auto; 
+    width: 100%;
+    max-width: 250px;
+  }
+  .about .about-body { 
+    flex: 0 0 auto; 
+    width: 100%;
+    max-width: 100%;
+  }
   
-  /* Contact form positioned to the right */
+  /* Contact form full width on mobile */
   .contact-form { 
-    max-width: 280px;
-    margin-left: auto;
-    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 0.5rem;
   }
   
   .card-media { height: 140px; }
