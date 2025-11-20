@@ -1,96 +1,164 @@
+/* Responsive global stylesheet for Square-Cube-UI
+   - Place this at src/styles.css
+   - Designed to work with .app-root, .site-header, .hero, .container, .responsive-grid, .card, .site-footer
+*/
+
+/* Variables */
 :root{
   --max-width: 1200px;
   --gap: 1rem;
   --bg: #ffffff;
-  --muted: #666;
+  --muted: #666666;
   --accent: #0b69ff;
+  --surface: #ffffff;
+  --card-border: #e9e9ef;
+  --radius: 10px;
+  --shadow: 0 8px 20px rgba(16,24,40,0.06);
   --base-font: 16px;
 }
 
-/* Scale the root font-size optionally (useful for accessibility) */
+/* Base */
 html { font-size: var(--base-font); -webkit-text-size-adjust: 100%; }
-
-/* Page layout */
-.app-root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #111827;
   background: var(--bg);
-  color: #111;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
 }
 
-.site-header {
-  padding: clamp(0.75rem, 2vw, 1.25rem);
-  text-align: center;
-  border-bottom: 1px solid #eee;
-  background: linear-gradient(90deg,#fff,#fafafa);
-}
+/* App layout */
+.app-root { min-height: 100vh; display:flex; flex-direction:column; }
+.site-main { flex: 1 0 auto; }
 
-.site-header h1 { margin: 0; font-size: clamp(1.25rem, 3vw, 2rem); }
-.subtitle { color: var(--muted); margin-top: 0.25rem; }
-
-/* Centered container that is fluid */
-.container{
+/* Centered fluid container */
+.container {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: clamp(0.5rem, 3vw, 1.5rem);
-  flex: 1 0 auto;
+  padding: clamp(0.6rem, 3vw, 1.25rem);
 }
 
-/* Responsive grid: auto-fit with minmax keeps columns fluid */
-.grid{
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(0.6rem, 2vw, 1rem);
+  background: linear-gradient(90deg,#fff,#fbfdff);
+  border-bottom: 1px solid #f1f3f5;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(4px);
+}
+.site-header .logo {
+  font-weight: 700;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: #0f172a;
+  text-decoration: none;
+}
+.site-header nav { display:flex; gap: 1rem; align-items:center; }
+.site-header a { color: var(--muted); text-decoration: none; padding:0.35rem 0.5rem; border-radius:6px; }
+.site-header a:hover { color: var(--accent); background: rgba(11,105,255,0.06); }
+
+/* Hero */
+.hero {
+  padding: clamp(1rem, 6vw, 3rem) 0;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+}
+.hero .hero-inner { max-width: 80ch; margin: 0 auto; padding: 0 1rem; }
+.hero h1 { margin: 0 0 0.5rem; font-size: clamp(1.6rem, 6vw, 2.8rem); line-height:1.05; }
+.hero p { margin: 0 auto; color: var(--muted); font-size: clamp(0.95rem, 2.2vw, 1.05rem); }
+
+/* Reusable responsive grid */
+.responsive-grid {
   display: grid;
   gap: var(--gap);
-  /* Each column at least 240px, grow to fill space */
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 /* Card */
 .card {
-  background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
   transition: transform .18s ease, box-shadow .18s ease;
 }
-.card:hover { transform: translateY(-4px); box-shadow: 0 6px 18px rgba(20,20,20,0.08); }
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.card-media { width:100%; height:160px; object-fit:cover; display:block; }
+.card-body { padding: 0.85rem; display:flex; flex-direction:column; gap:0.5rem; }
+.card-title { margin:0; font-weight:600; font-size: 1.05rem; }
+.card-text { margin:0; color: var(--muted); font-size: 0.95rem; }
 
-.card-img{
-  width: 100%;
-  height: auto; /* keeps aspect ratio */
-  object-fit: cover;
-  display: block;
+/* Services / Projects sections use container + responsive-grid */
+.section {
+  padding: clamp(0.8rem, 3.5vw, 1.6rem) 0;
 }
 
-/* Card content */
-.card-body{ padding: 0.75rem; display:flex; flex-direction:column; gap:0.5rem; }
-.card-title{ margin:0; font-size: 1.125rem; }
-.card-text{ margin:0; color:var(--muted); font-size: 0.95rem; }
+/* About */
+.about { display:flex; gap:1.25rem; align-items:center; flex-wrap:wrap; }
+.about .about-media { flex: 1 1 320px; max-width:520px; }
+.about .about-body { flex: 1 1 260px; }
+
+/* Contact form basics */
+.contact-form { max-width: 700px; margin: 0 auto; display:flex; flex-direction:column; gap:0.75rem; }
+.input, textarea, button {
+  font: inherit;
+  padding: 0.65rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #e6e9ef;
+}
+textarea { min-height: 120px; resize: vertical; }
+
+/* Buttons */
+.btn {
+  display:inline-flex; align-items:center; gap:0.5rem; justify-content:center;
+  padding: 0.6rem 0.9rem; border-radius: 8px; background: var(--accent); color: #fff; border: none; cursor:pointer;
+}
+.btn.secondary { background: transparent; color: var(--accent); border: 1px solid rgba(11,105,255,0.12); }
 
 /* Footer */
-.site-footer{ text-align:center; padding:1rem; color:var(--muted); border-top:1px solid #f0f0f0; }
+.site-footer { text-align:center; padding: 1rem; color:var(--muted); border-top: 1px solid #f1f3f5; background: #fff; }
 
-/* Breakpoints: tweak spacing & fonts */
+/* Utility */
+.text-center { text-align:center; }
+.muted { color: var(--muted); font-size: 0.95rem; }
+
+/* Small screens */
 @media (max-width: 599px) {
   :root { --gap: 0.6rem; }
-  .container { padding: 0.75rem; }
-  .card-title { font-size: 1rem; }
+  .container { padding: 0.6rem; }
+  .site-header { padding: 0.6rem; }
+  .about { flex-direction: column; }
+  .card-media { height: 140px; }
+  .hero h1 { font-size: clamp(1.4rem, 8vw, 2rem); }
+  nav { display: none; } /* if you have a hamburger, adjust accordingly */
 }
 
+/* Medium screens */
 @media (min-width: 600px) and (max-width: 959px) {
   :root { --gap: 0.8rem; }
-  .container { padding: 1rem; }
+  .container { padding: 0.9rem; }
+  .about { gap: 1rem; }
 }
 
+/* Large screens */
 @media (min-width: 960px) {
   :root { --gap: 1rem; }
   .container { padding: 1.25rem; }
+  .hero { text-align: left; padding-left: 4vw; padding-right: 4vw; }
 }
 
-/* Optional: reduce motion preference */
+/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .card, * { transition: none !important; animation: none !important; }
 }
