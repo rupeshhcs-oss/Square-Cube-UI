@@ -2,7 +2,7 @@
   "name": "square-cube",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rupeshhcs-oss.github.io/square-cube",
+  "homepage": "https://rupeshhcs-oss.github.io/Square-Cube-UI",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
