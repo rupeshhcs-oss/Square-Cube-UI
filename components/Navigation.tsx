@@ -29,18 +29,19 @@ const Navigation = () => {
 
   return (
     <header
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled
           ? 'bg-white shadow-lg'
           : 'bg-white/90 backdrop-blur-md'
-      }`}
+        }`}
     >
       <nav className="container-custom py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="#home" className="flex items-center gap-2 group">
-          <div className="bg-gradient-to-br from-primary-700 to-secondary-600 p-2 rounded-lg">
-            <span className="text-white font-bold text-lg">S&C</span>
-          </div>
+        <Link href="#home" className="flex items-center gap-2">
+          <img
+            src="/logo.png"
+            alt="Square & Cube"
+            className="h-9 w-9"
+          />
           <span className="font-bold text-lg text-gray-900 hidden sm:inline">
             Square & Cube
           </span>
