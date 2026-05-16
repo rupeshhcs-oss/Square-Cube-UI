@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { FiPhone, FiMail, FiMapPin, FiLinkedin, FiInstagram, FiFacebook, FiTwitter } from 'react-icons/fi'
 
 const Footer = () => {
