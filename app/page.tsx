@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FiArrowRight, FiCheck, FiUsers, FiAward, FiTrendingUp } from 'react-icons/fi'
-import { BsBuilding, BsPalette, BsEye, BsClipboard, BsPersonCheck, BsChartLine } from 'react-icons/bs'
+import { BsBuilding, BsPalette, BsEye, BsClipboard, BsPersonCheck, BsBarChartLine } from 'react-icons/bs'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -69,7 +69,7 @@ const Home = () => {
       color: 'from-purple-500 to-pink-500',
     },
     {
-      icon: BsChartLine,
+      icon: BsBarChartLine,
       title: 'Quality Assurance',
       description: 'Rigorous quality assurance protocols ensuring excellence at every stage.',
       color: 'from-yellow-500 to-amber-500',
