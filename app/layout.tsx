@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
+import RootLayoutWrapper from '@/components/RootLayoutWrapper'
 
 export const metadata: Metadata = {
   title: 'Square and Cube | Construction Consultancy & Project Management',
@@ -36,11 +35,9 @@ export default function RootLayout({
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%231a5f7a' font-weight='bold'>S</text></svg>" />
       </head>
       <body className="bg-white text-gray-900">
-        <Navigation />
-        <main className="min-h-screen">
+        <RootLayoutWrapper>
           {children}
-        </main>
-        <Footer />
+        </RootLayoutWrapper>
       </body>
     </html>
   )
