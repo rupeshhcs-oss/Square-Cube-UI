@@ -12,7 +12,7 @@ function ContactSection() {
         <button type="submit">Send Message</button>
       </form>
       <div className="contact-details">
-        <p>Email: hello@squarecube.com</p>
+        <p>Email: hiiii@squarecube.com</p>
         <p>Phone: +1 234 567 8901</p>
         <p>Location: 123 Modern Lane, Design City</p>
       </div>
