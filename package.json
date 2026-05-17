@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "description": "Square and Cube - Premium Construction Consultancy & Project Management",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "type-check": "tsc --noEmit"
-  },
+ "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "export": "next export"
+},
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
